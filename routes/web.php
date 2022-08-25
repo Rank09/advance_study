@@ -1,11 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use app\Http\controllers\AttendancedController;
 
+Route::get('/index', function () {
+    return view('index');
+});
 
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/index', function () {
+    return view('index');
 });
 
 Route::get('/dashboard', function () {
