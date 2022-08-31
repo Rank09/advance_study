@@ -1,13 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use app\Http\controllers\AttendancedController;
+use App\Http\Controllers\AttendancedController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 
-Route::middleware('auth')->group(function(){ 
+Route::middleware('auth')->group(function() { 
     Route::get('/', [AttendancedController::class, 'index']);
-    Route::get('/attendance/start', [AttendancedController::class, 'add']);
+    Route::get('/attendance', [AttendancedController::class, 'attendance']);
+    Route::post('/attendance/start', [AttendancedController::class, 'add']);
+    Route::post('/attendance/end', [AttendancedController::class, 'save']);
+    Route::get('/logout', [AuthenticatedSessionController::class,'destroy']);
 });
-
 
 require __DIR__.'/auth.php';

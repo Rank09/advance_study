@@ -11,7 +11,16 @@ class AttendancedController extends Controller
 {
   public function index()
   {
-    return view('inedex');
+    $user = Auth::user();
+    $param = ['user' =>$user];
+    return view('index', $param);
+  }
+
+  public function attendance()
+  {
+    $user = Auth::user();
+    $item = ['user' => $user];
+    return view('attendance', $item);
   }
 
   public function add(Request $request)
@@ -27,6 +36,23 @@ class AttendancedController extends Controller
         'date' => $date,
         'work_start' => $time
     ]);
+    
+    return redirect('/');
+  }
+
+  public function save(Request $request)
+  {
+    $id = Auth::id();
+
+    $dt = new Carbon();
+    $date = $dt->toDateString();
+    $time = $dt->toTimeString();
+
+  attendance::create([
+    'user_id' => $id,
+    'date' => $date,
+    'work_end' => $time
+  ]);
 
     return redirect('/');
   }

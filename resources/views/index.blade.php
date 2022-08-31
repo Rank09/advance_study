@@ -17,14 +17,14 @@
     <div class="common_header">
         <p class="login_header">Atte</p>
         <ul class="login_header_list">
-            <li class="login_header_list-item">ホーム</li>
-            <li class="login_header_list-item">日付</li>
-            <li class="login_header_list-item">ログアウト</li>
+            <li class="login_header_list-item"><a href="/">ホーム</a></li>
+            <li class="login_header_list-item"><a href="/attendance">日付</a></li>
+            <li class="login_header_list-item"><a href="/logout">ログアウト</a></li>
         </ul>
         </nav>
     </div>
     </div>
-    <p>~~さんお疲れ様です！</p>
+    <p>{{$user->name}}さんお疲れ様です！</p>
     <div class="main_content">
         <form action="/attendance/start" method="post" class="main_content-common">
             @csrf
@@ -40,11 +40,10 @@
         </form>
         <form action="" method="post" class="main_content-common">
             @csrf
-            
+
             <input type="submit" id="end_time" class="main_content-button" name="end_time" value="休憩終了" onclick="Btn4()" disabled>
         </form>
     </div>
-
 
     <div class="common_footer">
         <p class="login_footer">Atte,inc.</p>
