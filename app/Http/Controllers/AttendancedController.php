@@ -27,14 +27,14 @@ class AttendancedController extends Controller
   {
     $id = Auth::id();
 
-    $dt=new Carbon();
+    $dt = new Carbon();
     $date = $dt->toDateString();
     $time = $dt->toTimeString();
 
     attendance::create([
         'user_id' => $id,
         'date' => $date,
-        'work_start' => $time
+        'start_time' => $time
     ]);
     
     return redirect('/');
