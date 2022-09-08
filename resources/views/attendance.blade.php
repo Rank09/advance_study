@@ -22,9 +22,25 @@
     </ul>
     </nav>
   </div>
+  <div class="main">
+    <div class="main_date">
+      <ul class="main_category">
+        <li class="main_category-ttl">名前</li>
+        <li class="main_category-ttl">勤務開始</li>
+        <li class="main_category-ttl">勤務終了</li>
+        <li class="main_category-ttl">休憩時間</li>
+        <li class="main_category-ttl">勤務時間</li>
+      </ul>
+      <div></div>
+    </div>
+  </div>
 
-  <p>{{$user->name}}</p>
-  
+  @foreach ($items as $item)
+  <li>{{$items->getDetail()}}</li>
+  @endforeach
+
+
+
   <div class="common_footer">
     <p class="login_footer">Atte,inc.</p>
   </div>

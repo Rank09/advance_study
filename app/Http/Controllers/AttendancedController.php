@@ -34,7 +34,7 @@ class AttendancedController extends Controller
     attendance::create([
         'user_id' => $id,
         'date' => $date,
-        'work_start' => $time
+        'start_time' => $time
     ]);
     
     return redirect('/');
@@ -51,9 +51,17 @@ class AttendancedController extends Controller
   attendance::create([
     'user_id' => $id,
     'date' => $date,
-    'work_end' => $time
+    'end_time' => $time
   ]);
 
     return redirect('/');
   }
+
+  public function list()
+  {
+    $items = Attendance::Paginate(5);
+    return view('attendance', ['items' => $items]);
+  }
+
+
 }
