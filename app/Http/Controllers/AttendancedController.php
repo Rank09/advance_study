@@ -27,7 +27,7 @@ class AttendancedController extends Controller
   {
     $id = Auth::id();
 
-    $dt=new Carbon();
+    $dt = new Carbon();
     $date = $dt->toDateString();
     $time = $dt->toTimeString();
 

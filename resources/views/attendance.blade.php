@@ -34,11 +34,13 @@
       <div></div>
     </div>
   </div>
-
   @foreach ($items as $item)
-  <li>{{$items->getDetail()}}</li>
-  @endforeach
+  <li>{{$item->getDetail()}}</li>
+@endforeach
 
+{{$items->links()}}
+  <p>{{$user->name}}</p>
+  
 
 
   <div class="common_footer">
