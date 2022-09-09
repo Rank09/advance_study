@@ -24,25 +24,56 @@
         </nav>
     </div>
     </div>
-    <p>{{$user->name}}さんお疲れ様です！</p>
+    <p>{{ Auth::user()->name }}さんお疲れ様です！</p>
     <div class="main_content">
+
+        @if(isset($is_attendance_start))
         <form action="/attendance/start" method="post" class="main_content-common">
             @csrf
-            <input type="submit" id="work_start" class="main_content-button" name="work_start" value="勤務開始" onclick="Btn1()">
+            <input type="submit" id="work_start" class="main_content-button" name="work_start" value="勤務開始">
         </form>
+        @else
+        <form action="/attendance/start" method="post" class="main_content-common">
+            @csrf
+            <input type="submit" id="work_start" class="main_content-button" name="work_start" value="勤務開始" disabled>
+        </form>
+        @endif
+
+        @if(isset($is_attendance_end))
         <form action="/attendance/end" method="post" class="main_content-common">
             @csrf
-            <input type="submit" id="work_end" class="main_content-button" name="work_end" value="勤務終了" onclick="Btn2()" disabled>
+            <input type="submit" id="work_end" class="main_content-button" name="work_end" value="勤務終了">
         </form>
-        <form action="" method="post" class="main_content-common">
+        @else
+        <form action="/attendance/end" method="post" class="main_content-common">
             @csrf
-            <input type="submit" id="start_time" class="main_content-button" name="start_time" value="休憩開始" onclick="Btn3()" disabled>
+            <input type="submit" id="work_end" class="main_content-button" name="work_end" value="勤務終了" disabled>
         </form>
-        <form action="" method="post" class="main_content-common">
-            @csrf
+        @endif
 
-            <input type="submit" id="end_time" class="main_content-button" name="end_time" value="休憩終了" onclick="Btn4()" disabled>
+        @if(isset($is_rest_start))
+        <form action="" method="post" class="main_content-common">
+            @csrf
+            <input type="submit" id="start_time" class="main_content-button" name="start_time" value="休憩開始">
         </form>
+        @else
+        <form action="" method="post" class="main_content-common">
+            @csrf
+            <input type="submit" id="start_time" class="main_content-button" name="start_time" value="休憩開始" disabled>
+        </form>
+        @endif
+
+        @if(isset($is_rest_end))
+        <form action="" method="post" class="main_content-common">
+            @csrf
+            <input type="submit" id="end_time" class="main_content-button" name="end_time" value="休憩終了">
+        </form>
+        @else
+        <form action="" method="post" class="main_content-common">
+            @csrf
+            <input type="submit" id="end_time" class="main_content-button" name="end_time" value="休憩終了" disabled>
+        </form>
+        @endif
     </div>
 
     <div class="common_footer">
