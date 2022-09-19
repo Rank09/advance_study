@@ -79,7 +79,6 @@
     <div class="common_footer">
         <p class="login_footer">Atte,inc.</p>
     </div>
-    <script src="{{ asset('js/main.js') }}"></script>
 </body>
 
 </html>
